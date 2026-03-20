@@ -3,76 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Frontera</title>
+    <title>DÓLAR CAMBIO PY - Posadas/Encarnación</title>
     
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6976933477402196" crossorigin="anonymous"></script>
 
     <style>
-        body { 
-            font-family: sans-serif; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; 
-            background-color: #f0f2f5; 
-            margin: 0; 
-        }
-        .calc-container { 
-            background: white; 
-            padding: 2rem; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
-            text-align: center; 
-            width: 85%;
-            max-width: 350px;
-        }
-        h2 { color: #007bff; margin-bottom: 20px; }
-        input { 
-            width: 100%; 
-            padding: 10px; 
-            margin: 10px 0; 
-            border: 1px solid #ccc; 
-            border-radius: 5px; 
-            box-sizing: border-box;
-        }
-        button { 
-            background: #007bff; 
-            color: white; 
-            border: none; 
-            padding: 12px; 
-            border-radius: 5px; 
-            cursor: pointer; 
-            width: 100%;
-            font-size: 16px;
-        }
-        button:hover { background: #0056b3; }
-        #resultado { 
-            margin-top: 20px; 
-            font-size: 1.2rem; 
-            color: #333; 
-            font-weight: bold;
-        }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f0f2f5; margin: 0; display: flex; justify-content: center; padding: 20px; }
+        .container { background: white; width: 100%; max-width: 400px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); padding: 20px; text-align: center; }
+        h1 { color: #003399; font-size: 24px; margin-bottom: 5px; }
+        .subtitle { color: #888; margin-bottom: 20px; }
+        
+        .card { border-radius: 12px; padding: 15px; margin-bottom: 15px; font-weight: bold; }
+        .blue { background-color: #fff9db; color: #333; font-size: 22px; border: 1px solid #ffe066; }
+        .proyeccion { background-color: #ebfbee; color: #2f9e44; font-size: 14px; }
+        
+        .input-group { background-color: #e7f5ff; padding: 15px; border-radius: 12px; margin-bottom: 15px; }
+        label { display: block; color: #495057; font-size: 14px; margin-bottom: 8px; font-weight: bold; text-transform: uppercase; }
+        input { width: 90%; padding: 12px; border: 1px solid #ced4da; border-radius: 8px; font-size: 18px; text-align: center; }
+        
+        .wpp-btn { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: white; border-radius: 50%; width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); text-decoration: none; font-weight: bold; font-size: 12px; }
     </style>
 </head>
 <body>
-    <div class="calc-container">
-        <h2>Calculadora de Moneda</h2>
-        <input type="number" id="monto" placeholder="Monto en pesos">
-        <button onclick="calcular()">Calcular</button>
-        <div id="resultado"></div>
+
+<div class="container">
+    <h1>DÓLAR CAMBIO PY</h1>
+    <div class="subtitle">Posadas - Encarnación</div>
+
+    <div class="card blue">
+        Dólar Blue: $1430
     </div>
 
-    <script>
-        function calcular() {
-            let monto = document.getElementById('monto').value;
-            if (monto > 0) {
-                // Aquí podés cambiar el 1.25 por el número que vos uses para tu cuenta
-                let res = monto * 1.25; 
-                document.getElementById('resultado').innerText = "Resultado: $" + res.toLocaleString();
-            } else {
-                alert("Ingresá un monto primero");
-            }
+    <div class="card proyeccion">
+        📈 Proyectado (30 días): $1480
+    </div>
+
+    <div class="input-group">
+        <label>Cambio Calle (Ej: 4.4)</label>
+        <input type="number" id="calle" value="4.4" oninput="convertir()">
+    </div>
+
+    <label>Pesos (ARS)</label>
+    <input type="number" id="pesos" placeholder="0" oninput="convertirPesos()">
+
+    <br><br>
+
+    <label>Guaraníes (PYG)</label>
+    <input type="number" id="guaranies" placeholder="0" oninput="convertirGuarani()">
+</div>
+
+<a href="https://wa.me/3764757019" class="wpp-btn">WPP</a>
+
+<script>
+    function convertirPesos() {
+        let calle = document.getElementById('calle').value;
+        let pesos = document.getElementById('pesos').value;
+        if(pesos > 0) {
+            document.getElementById('guaranies').value = Math.round(pesos * calle);
         }
-    </script>
+    }
+
+    function convertirGuarani() {
+        let calle = document.getElementById('calle').value;
+        let guarani = document.getElementById('guaranies').value;
+        if(guarani > 0) {
+            document.getElementById('pesos').value = Math.round(guarani / calle);
+        }
+    }
+    
+    function convertir() {
+        convertirPesos();
+    }
+</script>
+
 </body>
 </html>

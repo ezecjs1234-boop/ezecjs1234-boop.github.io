@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Frontera</title>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6976933477402196" crossorigin="anonymous"></script>
+
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0f2f5; margin: 0; }
+        .calc-container { background: white; padding: 2.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); text-align: center; max-width: 400px; width: 90%; }
+        h2 { color: #333; }
+        input { width: 100%; padding: 12px; margin: 15px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 16px; }
+        button { background: #28a745; color: white; border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer; font-size: 16px; width: 100%; }
+        button:hover { background: #218838; }
+        #resultado { margin-top: 20px; color: #007bff; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="calc-container">
+        <h2>Calculadora de Moneda</h2>
+        <p>Ingresá el monto para convertir</p>
+        <input type="number" id="monto" placeholder="Monto en pesos">
+        <button onclick="calcular()">Calcular Conversión</button>
+        <h3 id="resultado"></h3>
+    </div>
+
+    <script>
+        function calcular() {
+            let monto = document.getElementById('monto').value;
+            if (monto > 0) {
+                let res = monto * 1.25; // Tu fórmula de cálculo
+                document.getElementById('resultado').innerText = "Resultado: " + res.toFixed(2);
+            } else {
+                alert("Por favor, ingresá un monto válido");
+            }
+        }
+    </script>
+
+</body>
+</html>
+
